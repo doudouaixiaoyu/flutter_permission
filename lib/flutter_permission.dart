@@ -22,4 +22,8 @@ class FlutterPermission {
         await _channel.invokeMethod('requestPermission', permission);
     return isRequest;
   }
+
+  static Future<void> installApk(String apkPath) async {
+    await _channel.invokeMethod('installApp', apkPath);
+  }
 }

@@ -59,6 +59,10 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  Future<void> installApp() async {
+    await FlutterPermission.installApk('/sdcard/Download/app-debug.apk');
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -97,6 +101,16 @@ class _MyAppState extends State<MyApp> {
                   child: Text('申请读写的权限'),
                 ),
                 Text(_isRequest ? '请求成功' : '请求失败'),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                FlatButton(
+                  color: Theme.of(context).primaryColor,
+                  onPressed: installApp,
+                  child: Text('安装App'),
+                ),
               ],
             ),
           ],
